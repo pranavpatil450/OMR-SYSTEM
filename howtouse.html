@@ -1,0 +1,75 @@
+<html>
+    <head>
+        <style>
+            body{
+                margin: 0;
+	            padding: 0;
+	            display: flex;
+	            justify-content: center;
+	            align-items: center;
+	            min-height: 100vh;
+	            font-family: 'Jost', sans-serif;
+                background: radial-gradient(ellipse at bottom, #0d1d31 0%, #0c0d13 100%);
+            }
+            .navbar {
+            /*background: linear-gradient(90deg, #0033cc, #9933ff);*/ /* Define your gradient colors here */
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            width: 100%;
+            height: 60px; /* Adjust the height as needed */
+            position: fixed;
+            top: 0;
+            z-index: 1;
+            animation: gradientAnimation 5s linear infinite;
+            background-size: 200% 200%;
+            font-family: 'Poppins',sans-serif;
+        }
+
+        @keyframes gradientAnimation {
+            0% {
+                background-position: 0% 50%;
+            }
+            100% {
+                background-position: 100% 50%;
+            }
+        }
+
+        .navbar a {
+            text-decoration: none;
+            color: #fff; /* Text color for navbar links */
+            padding: 10px 20px; /* Adjust padding as needed */
+            border-radius: 2px;
+            
+        }
+        .navbar a:hover{
+            color: greenyellow;
+            font-size: 1.2rem;
+        }
+	body	.omr-content{
+			width: 500px;
+			color: #fff;
+            z-index: 1;
+		}
+        </style>
+    </head>
+    <body>
+        <nav class="navbar">
+            <a href="#">Home</a>
+            <a href="/aboutus">About Us</a>
+            <a href="/howtouse">How to use</a>
+        </nav>
+        <div class="omr-content">
+            <center><h1>OMR System</h1>
+            <h2>Please follow the following steps</h2></center>
+            <p>Step 1:- Login or signup your credentails</p>
+            <p>Step 2:- After login you will see textfields,you need to input in input fields for checking the OMR sheets according to your convinience</p>
+            <p>Step 3:- While giving input keep in mind that the questions and choices number should be in multiple of 5 like:-(5,10,15)</p>
+            <p>Step 4:- The Answers you are gonna put according to your questions should be put in comma format as mentioned</p>
+            <p>Step 5:- After following all this steps you will be redirected to the main page,where you need to check if your webcam is working or not and the desired output of answers is received or not</p>
+            <p>Step 6:- You can download the Screenshot of a Omr marksheet according to your desire b clicking the download button</p>
+
+            <!-- Add your OMR system content here -->
+        </div>
+    </body>
+</html>

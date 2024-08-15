@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://kit.fontawesome.com/ff42708c8d.js" crossorigin="anonymous"></script>
+    <title>OMR</title>
+    <style>
+        body{
+	margin: 0;
+	padding: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 100vh;
+	font-family: 'Jost', sans-serif;
+	/*background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);*/
+  background: radial-gradient(ellipse at bottom, #0d1d31 0%, #0c0d13 100%);
+}
+        #video-container {
+            overflow: hidden;
+            width: 500px; /* Set the desired width */
+            height: 500px; /* Set the desired height */
+        }
+
+        #webcam {
+            width: 90%; /* Ensure video fills the container */
+            height: 90%; /* Ensure video fills the container */
+        }
+        body .btn{
+	width: 40%;
+	height: 50px;
+	margin: 60px;
+	justify-content: center;
+	display: block;
+	color: #fff;
+	background: #573b8a;
+	font-size: 1.5em;
+	font-weight: bold;
+	margin-top: 10px;
+	outline: none;
+	border: none;
+	border-radius: 5px;
+	transition: .2s ease-in;
+	cursor: pointer;
+    margin-left: 175px;
+}
+body .btn2{
+    width: 20%;
+	height: 30px;
+	margin: 30px;
+	justify-content: center;
+	display: block;
+	color: #fff;
+	background: #573b8a;
+	font-size: 0.5em;
+	font-weight: bold;
+	margin-top: 10px;
+	outline: none;
+	border: none;
+	border-radius: 5px;
+	transition: .2s ease-in;
+	cursor: pointer;
+    margin-left: 112px;
+}
+input{
+    width: 60%;
+	height: 15px;
+	background: #e0dede;
+	justify-content: center;
+	display: flex;
+	padding: 10px;
+	border: none;
+	outline: none;
+	border-radius: 5px;
+    margin-left: 110px;
+}
+label{
+    margin-left: 110px;
+}
+.next{
+    box-shadow: 5px 20px 50px #000;
+}
+#video-container{
+    box-shadow: 5px 20px 50px #000;
+    justify-content: center;
+    text-align: center;
+    z-index: 1;
+}
+.navbar {
+            /*background: linear-gradient(90deg, #0033cc, #9933ff);*/ /* Define your gradient colors here */
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            width: 100%;
+            height: 60px; /* Adjust the height as needed */
+            position: fixed;
+            top: 0;
+            z-index: 1;
+            animation: gradientAnimation 5s linear infinite;
+            background-size: 200% 200%;
+            font-family: 'Poppins',sans-serif;
+        }
+
+        @keyframes gradientAnimation {
+            0% {
+                background-position: 0% 50%;
+            }
+            100% {
+                background-position: 100% 50%;
+            }
+        }
+.navbar a {
+            text-decoration: none;
+            color: #fff; /* Text color for navbar links */
+            padding: 10px 20px; /* Adjust padding as needed */
+            border-radius: 2px;
+            
+        }
+        .navbar a:hover{
+            color: greenyellow;
+            font-size: 1.2rem;
+        }
+
+               
+.stars {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 120%;
+  transform: rotate(-45deg);
+  color: #fff;
+  z-index: -1;
+}
+
+.star {
+  --star-color: var(--primary-color);
+  --star-tail-length: 6em;
+  --star-tail-height: 2px;
+  --star-width: calc(var(--star-tail-length) / 6);
+  --fall-duration: 9s;
+  --tail-fade-duration: var(--fall-duration);
+  position: absolute;
+  top: var(--top-offset);
+  left: 0;
+  width: var(--star-tail-length);
+  height: var(--star-tail-height);
+  color: var(--star-color);
+  background: linear-gradient(45deg, currentColor, transparent);
+  border-radius: 50%;
+  filter: drop-shadow(0 0 6px currentColor);
+  transform: translate3d(104em, 0, 0);
+  animation: fall var(--fall-duration) var(--fall-delay) linear infinite, tail-fade var(--tail-fade-duration) var(--fall-delay) ease-out infinite;
+}
+@media screen and (max-width: 750px) {
+  .star {
+    animation: fall var(--fall-duration) var(--fall-delay) linear infinite;
+  }
+}
+.star:nth-child(1) {
+  --star-tail-length: 6.12em;
+  --top-offset: 65.11vh;
+  --fall-duration: 8.272s;
+  --fall-delay: 3.952s;
+}
+.star:nth-child(2) {
+  --star-tail-length: 5.58em;
+  --top-offset: 39.24vh;
+  --fall-duration: 6.157s;
+  --fall-delay: 5.681s;
+}
+.star:nth-child(3) {
+  --star-tail-length: 5.16em;
+  --top-offset: 6.95vh;
+  --fall-duration: 6.978s;
+  --fall-delay: 1.516s;
+}
+.star:nth-child(4) {
+  --star-tail-length: 6.97em;
+  --top-offset: 25.39vh;
+  --fall-duration: 10.809s;
+  --fall-delay: 2.865s;
+}
+.star:nth-child(5) {
+  --star-tail-length: 7.06em;
+  --top-offset: 77.08vh;
+  --fall-duration: 6.696s;
+  --fall-delay: 1.044s;
+}
+.star:nth-child(6) {
+  --star-tail-length: 5.22em;
+  --top-offset: 72.4vh;
+  --fall-duration: 6.789s;
+  --fall-delay: 2.779s;
+}
+.star:nth-child(7) {
+  --star-tail-length: 7.37em;
+  --top-offset: 16.75vh;
+  --fall-duration: 7.642s;
+  --fall-delay: 8.097s;
+}
+.star:nth-child(8) {
+  --star-tail-length: 7.37em;
+  --top-offset: 99.54vh;
+  --fall-duration: 8.54s;
+  --fall-delay: 0.855s;
+}
+.star:nth-child(9) {
+  --star-tail-length: 6.29em;
+  --top-offset: 69.88vh;
+  --fall-duration: 11.627s;
+  --fall-delay: 7.96s;
+}
+.star:nth-child(10) {
+  --star-tail-length: 6.84em;
+  --top-offset: 38.64vh;
+  --fall-duration: 6.953s;
+  --fall-delay: 9.916s;
+}
+.star:nth-child(11) {
+  --star-tail-length: 7.2em;
+  --top-offset: 76.93vh;
+  --fall-duration: 9.707s;
+  --fall-delay: 5.614s;
+}
+.star:nth-child(12) {
+  --star-tail-length: 5.04em;
+  --top-offset: 28.88vh;
+  --fall-duration: 11.233s;
+  --fall-delay: 8.198s;
+}
+.star:nth-child(13) {
+  --star-tail-length: 5.06em;
+  --top-offset: 88.38vh;
+  --fall-duration: 6.506s;
+  --fall-delay: 2.931s;
+}
+.star:nth-child(14) {
+  --star-tail-length: 5.69em;
+  --top-offset: 38vh;
+  --fall-duration: 8.498s;
+  --fall-delay: 1.396s;
+}
+.star:nth-child(15) {
+  --star-tail-length: 5.6em;
+  --top-offset: 35.52vh;
+  --fall-duration: 11.356s;
+  --fall-delay: 7.482s;
+}
+.star:nth-child(16) {
+  --star-tail-length: 6.4em;
+  --top-offset: 79.63vh;
+  --fall-duration: 8.361s;
+  --fall-delay: 5.185s;
+}
+.star:nth-child(17) {
+  --star-tail-length: 6.59em;
+  --top-offset: 42.32vh;
+  --fall-duration: 9.928s;
+  --fall-delay: 8.003s;
+}
+.star:nth-child(18) {
+  --star-tail-length: 6.29em;
+  --top-offset: 50.63vh;
+  --fall-duration: 10.818s;
+  --fall-delay: 2.626s;
+}
+.star:nth-child(19) {
+  --star-tail-length: 6.41em;
+  --top-offset: 6.87vh;
+  --fall-duration: 8.081s;
+  --fall-delay: 4.301s;
+}
+.star:nth-child(20) {
+  --star-tail-length: 6.4em;
+  --top-offset: 7.62vh;
+  --fall-duration: 10.735s;
+  --fall-delay: 0.268s;
+}
+.star:nth-child(21) {
+  --star-tail-length: 5.18em;
+  --top-offset: 19.55vh;
+  --fall-duration: 6.648s;
+  --fall-delay: 3.965s;
+}
+.star:nth-child(22) {
+  --star-tail-length: 5.24em;
+  --top-offset: 5.48vh;
+  --fall-duration: 8.843s;
+  --fall-delay: 6.809s;
+}
+.star:nth-child(23) {
+  --star-tail-length: 6.79em;
+  --top-offset: 44.64vh;
+  --fall-duration: 6.319s;
+  --fall-delay: 5.046s;
+}
+.star:nth-child(24) {
+  --star-tail-length: 5.48em;
+  --top-offset: 92.22vh;
+  --fall-duration: 11.091s;
+  --fall-delay: 2.26s;
+}
+.star:nth-child(25) {
+  --star-tail-length: 5.26em;
+  --top-offset: 19.07vh;
+  --fall-duration: 7.456s;
+  --fall-delay: 0.844s;
+}
+.star:nth-child(26) {
+  --star-tail-length: 5.87em;
+  --top-offset: 52.17vh;
+  --fall-duration: 9.543s;
+  --fall-delay: 5.822s;
+}
+.star:nth-child(27) {
+  --star-tail-length: 6.7em;
+  --top-offset: 59.05vh;
+  --fall-duration: 8.535s;
+  --fall-delay: 5.021s;
+}
+.star:nth-child(28) {
+  --star-tail-length: 7.13em;
+  --top-offset: 96.3vh;
+  --fall-duration: 7.178s;
+  --fall-delay: 3.519s;
+}
+.star:nth-child(29) {
+  --star-tail-length: 5.52em;
+  --top-offset: 94.79vh;
+  --fall-duration: 6.561s;
+  --fall-delay: 2.848s;
+}
+.star:nth-child(30) {
+  --star-tail-length: 5.32em;
+  --top-offset: 68.48vh;
+  --fall-duration: 9.647s;
+  --fall-delay: 8.676s;
+}
+.star:nth-child(31) {
+  --star-tail-length: 5.34em;
+  --top-offset: 59.56vh;
+  --fall-duration: 6.351s;
+  --fall-delay: 5.071s;
+}
+.star:nth-child(32) {
+  --star-tail-length: 5.55em;
+  --top-offset: 48.73vh;
+  --fall-duration: 7.195s;
+  --fall-delay: 8.105s;
+}
+.star:nth-child(33) {
+  --star-tail-length: 6.36em;
+  --top-offset: 85.14vh;
+  --fall-duration: 7.423s;
+  --fall-delay: 0.79s;
+}
+.star:nth-child(34) {
+  --star-tail-length: 5.23em;
+  --top-offset: 74.99vh;
+  --fall-duration: 11.574s;
+  --fall-delay: 4.471s;
+}
+.star:nth-child(35) {
+  --star-tail-length: 6.94em;
+  --top-offset: 71.63vh;
+  --fall-duration: 6.741s;
+  --fall-delay: 2.376s;
+}
+.star:nth-child(36) {
+  --star-tail-length: 5.4em;
+  --top-offset: 71.73vh;
+  --fall-duration: 10.708s;
+  --fall-delay: 1.743s;
+}
+.star:nth-child(37) {
+  --star-tail-length: 6.59em;
+  --top-offset: 44vh;
+  --fall-duration: 10.136s;
+  --fall-delay: 6.644s;
+}
+.star:nth-child(38) {
+  --star-tail-length: 5.93em;
+  --top-offset: 5.09vh;
+  --fall-duration: 11.881s;
+  --fall-delay: 4.453s;
+}
+.star:nth-child(39) {
+  --star-tail-length: 6.49em;
+  --top-offset: 71.08vh;
+  --fall-duration: 10.717s;
+  --fall-delay: 0.141s;
+}
+.star:nth-child(40) {
+  --star-tail-length: 6.51em;
+  --top-offset: 11.95vh;
+  --fall-duration: 8.341s;
+  --fall-delay: 6.303s;
+}
+.star:nth-child(41) {
+  --star-tail-length: 7.46em;
+  --top-offset: 33.3vh;
+  --fall-duration: 10.184s;
+  --fall-delay: 9.538s;
+}
+.star:nth-child(42) {
+  --star-tail-length: 6.34em;
+  --top-offset: 41.64vh;
+  --fall-duration: 7.686s;
+  --fall-delay: 4.891s;
+}
+.star:nth-child(43) {
+  --star-tail-length: 5.32em;
+  --top-offset: 88.27vh;
+  --fall-duration: 6.643s;
+  --fall-delay: 9.97s;
+}
+.star:nth-child(44) {
+  --star-tail-length: 6.33em;
+  --top-offset: 25.64vh;
+  --fall-duration: 10.401s;
+  --fall-delay: 9.682s;
+}
+.star:nth-child(45) {
+  --star-tail-length: 5.9em;
+  --top-offset: 92.91vh;
+  --fall-duration: 7.342s;
+  --fall-delay: 1.078s;
+}
+.star:nth-child(46) {
+  --star-tail-length: 6.58em;
+  --top-offset: 52.84vh;
+  --fall-duration: 10.412s;
+  --fall-delay: 2.878s;
+}
+.star:nth-child(47) {
+  --star-tail-length: 6.66em;
+  --top-offset: 95.98vh;
+  --fall-duration: 9.195s;
+  --fall-delay: 6.012s;
+}
+.star:nth-child(48) {
+  --star-tail-length: 5.77em;
+  --top-offset: 62.39vh;
+  --fall-duration: 8.677s;
+  --fall-delay: 1.599s;
+}
+.star:nth-child(49) {
+  --star-tail-length: 5.85em;
+  --top-offset: 63.65vh;
+  --fall-duration: 11.333s;
+  --fall-delay: 6.027s;
+}
+.star:nth-child(50) {
+  --star-tail-length: 6.72em;
+  --top-offset: 63.47vh;
+  --fall-duration: 6.651s;
+  --fall-delay: 5.54s;
+}
+.star::before, .star::after {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: calc(var(--star-width) / -2);
+  width: var(--star-width);
+  height: 100%;
+  background: linear-gradient(45deg, transparent, currentColor, transparent);
+  border-radius: inherit;
+  animation: blink 2s linear infinite;
+}
+.star::before {
+  transform: rotate(45deg);
+}
+.star::after {
+  transform: rotate(-45deg);
+}
+
+@keyframes fall {
+  to {
+    transform: translate3d(-30em, 0, 0);
+  }
+}
+@keyframes tail-fade {
+  0%, 50% {
+    width: var(--star-tail-length);
+    opacity: 1;
+  }
+  70%, 80% {
+    width: 0;
+    opacity: 0.4;
+  }
+  100% {
+    width: 0;
+    opacity: 0;
+  }
+}
+@keyframes blink {
+  50% {
+    opacity: 0.6;
+  }
+}
+body #logo{
+  background-color: black;
+}
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.0.0-alpha.12/html2canvas.min.js"></script>
+</head>
+<body>
+    <nav class="navbar">
+    <a href="/logout" class="fas fa-user" id="logo">LOGOUT</a>
+	</nav>
+
+    <div class="stars">
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+      </div>
+    <div style="width: 100%; height: 500px; margin-top:30px ;">
+    <div id="video-container" style="float: left; width: 50%;">
+        <h1 style="color:white;">OMR SYSTEM</h1>
+        <img id="webcam" src="{{ url_for('video') }}" alt="Webcam Feed" style="width: 70%; height:400px;">
+    </div>
+    <center>
+    <div style="float: left;width: 50%;height: 500px;" class="next">
+    <div style="margin-top: 150px; color: #e0dede;" class="next-next"> 
+    <label for="filename">File Name:</label>
+    <input type="text" id="filename" placeholder="Enter file name">
+    <button id="capture" class="btn2">Download</button>
+    </div>
+    <script>
+        const video = document.getElementById('webcam');
+        const captureButton = document.getElementById('capture');
+        const filenameInput = document.getElementById('filename');
+
+        // Get the webcam stream and display it
+        navigator.mediaDevices.getUserMedia({ video: true })
+            .then(stream => {
+                video.srcObject = stream;
+            })
+            .catch(error => {
+                console.error('Error accessing webcam:', error);
+            });
+
+        // Capture screenshot on button click
+        captureButton.addEventListener('click', () => {
+            // Get the user-entered file name
+            const customFileName = filenameInput.value || 'webcam_screenshot';
+
+            // Get the video container's dimensions
+            const containerWidth = document.getElementById('video-container').offsetWidth;
+            const containerHeight = document.getElementById('video-container').offsetHeight;
+
+            // Create a canvas with the same dimensions as the video container
+            const canvas = document.createElement('canvas');
+            canvas.width = containerWidth;
+            canvas.height = containerHeight;
+            const context = canvas.getContext('2d');
+
+            // Draw the video frame onto the canvas, cropping it to fit the container
+            context.drawImage(video, 0, 0, containerWidth, containerHeight);
+
+            // Convert the canvas to a data URL
+            const dataURL = canvas.toDataURL('image/png');
+
+            // Create a download link with the custom file name
+            const a = document.createElement('a');
+            a.href = dataURL;
+            a.download = `${customFileName}.png`;
+
+            // Trigger a click event on the link to initiate download
+            a.click();
+        });
+    </script>
+    </div>
+  </center>
+    </div>
+</body>
+</html>
+
+
+
+
+
+

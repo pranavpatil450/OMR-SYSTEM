@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>OMR_LOGIN</title>
+	<link rel="stylesheet" type="text/css" href="slide navbar style.css">
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap" rel="stylesheet">
+</head>
+<style>
+	body{
+	margin: 0;
+	padding: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 100vh;
+	font-family: 'Jost', sans-serif;
+	/*background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);*/
+  background: radial-gradient(ellipse at bottom, #0d1d31 0%, #0c0d13 100%);
+}
+.main{
+	width: 350px;
+	height: 500px;
+	background: red;
+	overflow: hidden;
+	/*background-color: rgba(255, 255, 255, 0.5);*/
+  background: radial-gradient(ellipse at bottom, rgba(13, 29, 49, 0) 0%, rgba(12, 13, 19, 1) 100%);
+	border-radius: 10px;
+	box-shadow: 5px 20px 50px #000;
+	margin-left: 100px;
+	margin-top: 50px;
+  display: block;
+	z-index: 99;
+}
+#chk{
+	display: none;
+}
+.signup{
+	position: relative;
+	width:100%;
+	height: 100%;
+}
+.main label{
+	color: #fff;
+	font-size: 2.3em;
+	justify-content: center;
+	display: flex;
+	margin: 60px;
+	font-weight: bold;
+	cursor: pointer;
+	transition: .5s ease-in-out;
+}
+.main input{
+	width: 60%;
+	height: 20px;
+  color: #fff;
+	background: radial-gradient(ellipse at bottom, rgba(13, 29, 49, 0) 0%, rgba(12, 13, 19, 1) 100%);
+	justify-content: center;
+	display: flex;
+	margin: 20px auto;
+	padding: 10px;
+	border: none;
+	outline: none;
+	border-radius: 5px;
+}
+.main input::placeholder{
+  color: #fff;
+}
+
+body .btn{
+	width: 60%;
+	height: 40px;
+	margin: 10px auto;
+	justify-content: center;
+	display: block;
+	color: #fff;
+	background: #573b8a;
+	font-size: 1em;
+	font-weight: bold;
+	margin-top: 20px;
+	outline: none;
+	border: none;
+	border-radius: 2px;
+	transition: .2s ease-in;
+	cursor: pointer;
+}
+button:hover{
+	background: #6d44b8;
+}
+.login{
+	height: 460px;
+	background: #eee;
+	border-radius: 60% / 10%;
+	transform: translateY(-180px);
+	transition: .8s ease-in-out;
+}
+.login label{
+	color: #573b8a;
+	transform: scale(.6);
+}
+
+#chk:checked ~ .login{
+	transform: translateY(-500px);
+}
+#chk:checked ~ .login label{
+	transform: scale(1);	
+}
+#chk:checked ~ .signup label{
+	transform: scale(.6);
+}
+
+.navbar {
+            /*background: linear-gradient(90deg, #0033cc, #9933ff);*/ /* Define your gradient colors here */
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            width: 100%;
+            height: 60px; /* Adjust the height as needed */
+            position: fixed;
+            top: 0;
+            z-index: 1;
+            animation: gradientAnimation 5s linear infinite;
+            background-size: 200% 200%;
+            font-family: 'Poppins',sans-serif;
+        }
+
+        @keyframes gradientAnimation {
+            0% {
+                background-position: 0% 50%;
+            }
+            100% {
+                background-position: 100% 50%;
+            }
+        }
+
+        .navbar a {
+            text-decoration: none;
+            color: #fff; /* Text color for navbar links */
+            padding: 10px 20px; /* Adjust padding as needed */
+            border-radius: 2px;
+            
+        }
+        .navbar a:hover{
+            color: greenyellow;
+            font-size: 1.2rem;
+        }
+	body	.omr-content{
+			width: 300px;
+			color: #fff;
+            z-index: 99;
+		}
+        
+        
+.stars {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 120%;
+  transform: rotate(-45deg);
+  color: #fff;
+}
+
+.star {
+  --star-color: var(--primary-color);
+  --star-tail-length: 6em;
+  --star-tail-height: 2px;
+  --star-width: calc(var(--star-tail-length) / 6);
+  --fall-duration: 9s;
+  --tail-fade-duration: var(--fall-duration);
+  position: absolute;
+  top: var(--top-offset);
+  left: 0;
+  width: var(--star-tail-length);
+  height: var(--star-tail-height);
+  color: var(--star-color);
+  background: linear-gradient(45deg, currentColor, transparent);
+  border-radius: 50%;
+  filter: drop-shadow(0 0 6px currentColor);
+  transform: translate3d(104em, 0, 0);
+  animation: fall var(--fall-duration) var(--fall-delay) linear infinite, tail-fade var(--tail-fade-duration) var(--fall-delay) ease-out infinite;
+}
+@media screen and (max-width: 750px) {
+  .star {
+    animation: fall var(--fall-duration) var(--fall-delay) linear infinite;
+  }
+}
+.star:nth-child(1) {
+  --star-tail-length: 6.12em;
+  --top-offset: 65.11vh;
+  --fall-duration: 8.272s;
+  --fall-delay: 3.952s;
+}
+.star:nth-child(2) {
+  --star-tail-length: 5.58em;
+  --top-offset: 39.24vh;
+  --fall-duration: 6.157s;
+  --fall-delay: 5.681s;
+}
+.star:nth-child(3) {
+  --star-tail-length: 5.16em;
+  --top-offset: 6.95vh;
+  --fall-duration: 6.978s;
+  --fall-delay: 1.516s;
+}
+.star:nth-child(4) {
+  --star-tail-length: 6.97em;
+  --top-offset: 25.39vh;
+  --fall-duration: 10.809s;
+  --fall-delay: 2.865s;
+}
+.star:nth-child(5) {
+  --star-tail-length: 7.06em;
+  --top-offset: 77.08vh;
+  --fall-duration: 6.696s;
+  --fall-delay: 1.044s;
+}
+.star:nth-child(6) {
+  --star-tail-length: 5.22em;
+  --top-offset: 72.4vh;
+  --fall-duration: 6.789s;
+  --fall-delay: 2.779s;
+}
+.star:nth-child(7) {
+  --star-tail-length: 7.37em;
+  --top-offset: 16.75vh;
+  --fall-duration: 7.642s;
+  --fall-delay: 8.097s;
+}
+.star:nth-child(8) {
+  --star-tail-length: 7.37em;
+  --top-offset: 99.54vh;
+  --fall-duration: 8.54s;
+  --fall-delay: 0.855s;
+}
+.star:nth-child(9) {
+  --star-tail-length: 6.29em;
+  --top-offset: 69.88vh;
+  --fall-duration: 11.627s;
+  --fall-delay: 7.96s;
+}
+.star:nth-child(10) {
+  --star-tail-length: 6.84em;
+  --top-offset: 38.64vh;
+  --fall-duration: 6.953s;
+  --fall-delay: 9.916s;
+}
+.star:nth-child(11) {
+  --star-tail-length: 7.2em;
+  --top-offset: 76.93vh;
+  --fall-duration: 9.707s;
+  --fall-delay: 5.614s;
+}
+.star:nth-child(12) {
+  --star-tail-length: 5.04em;
+  --top-offset: 28.88vh;
+  --fall-duration: 11.233s;
+  --fall-delay: 8.198s;
+}
+.star:nth-child(13) {
+  --star-tail-length: 5.06em;
+  --top-offset: 88.38vh;
+  --fall-duration: 6.506s;
+  --fall-delay: 2.931s;
+}
+.star:nth-child(14) {
+  --star-tail-length: 5.69em;
+  --top-offset: 38vh;
+  --fall-duration: 8.498s;
+  --fall-delay: 1.396s;
+}
+.star:nth-child(15) {
+  --star-tail-length: 5.6em;
+  --top-offset: 35.52vh;
+  --fall-duration: 11.356s;
+  --fall-delay: 7.482s;
+}
+.star:nth-child(16) {
+  --star-tail-length: 6.4em;
+  --top-offset: 79.63vh;
+  --fall-duration: 8.361s;
+  --fall-delay: 5.185s;
+}
+.star:nth-child(17) {
+  --star-tail-length: 6.59em;
+  --top-offset: 42.32vh;
+  --fall-duration: 9.928s;
+  --fall-delay: 8.003s;
+}
+.star:nth-child(18) {
+  --star-tail-length: 6.29em;
+  --top-offset: 50.63vh;
+  --fall-duration: 10.818s;
+  --fall-delay: 2.626s;
+}
+.star:nth-child(19) {
+  --star-tail-length: 6.41em;
+  --top-offset: 6.87vh;
+  --fall-duration: 8.081s;
+  --fall-delay: 4.301s;
+}
+.star:nth-child(20) {
+  --star-tail-length: 6.4em;
+  --top-offset: 7.62vh;
+  --fall-duration: 10.735s;
+  --fall-delay: 0.268s;
+}
+.star:nth-child(21) {
+  --star-tail-length: 5.18em;
+  --top-offset: 19.55vh;
+  --fall-duration: 6.648s;
+  --fall-delay: 3.965s;
+}
+.star:nth-child(22) {
+  --star-tail-length: 5.24em;
+  --top-offset: 5.48vh;
+  --fall-duration: 8.843s;
+  --fall-delay: 6.809s;
+}
+.star:nth-child(23) {
+  --star-tail-length: 6.79em;
+  --top-offset: 44.64vh;
+  --fall-duration: 6.319s;
+  --fall-delay: 5.046s;
+}
+.star:nth-child(24) {
+  --star-tail-length: 5.48em;
+  --top-offset: 92.22vh;
+  --fall-duration: 11.091s;
+  --fall-delay: 2.26s;
+}
+.star:nth-child(25) {
+  --star-tail-length: 5.26em;
+  --top-offset: 19.07vh;
+  --fall-duration: 7.456s;
+  --fall-delay: 0.844s;
+}
+.star:nth-child(26) {
+  --star-tail-length: 5.87em;
+  --top-offset: 52.17vh;
+  --fall-duration: 9.543s;
+  --fall-delay: 5.822s;
+}
+.star:nth-child(27) {
+  --star-tail-length: 6.7em;
+  --top-offset: 59.05vh;
+  --fall-duration: 8.535s;
+  --fall-delay: 5.021s;
+}
+.star:nth-child(28) {
+  --star-tail-length: 7.13em;
+  --top-offset: 96.3vh;
+  --fall-duration: 7.178s;
+  --fall-delay: 3.519s;
+}
+.star:nth-child(29) {
+  --star-tail-length: 5.52em;
+  --top-offset: 94.79vh;
+  --fall-duration: 6.561s;
+  --fall-delay: 2.848s;
+}
+.star:nth-child(30) {
+  --star-tail-length: 5.32em;
+  --top-offset: 68.48vh;
+  --fall-duration: 9.647s;
+  --fall-delay: 8.676s;
+}
+.star:nth-child(31) {
+  --star-tail-length: 5.34em;
+  --top-offset: 59.56vh;
+  --fall-duration: 6.351s;
+  --fall-delay: 5.071s;
+}
+.star:nth-child(32) {
+  --star-tail-length: 5.55em;
+  --top-offset: 48.73vh;
+  --fall-duration: 7.195s;
+  --fall-delay: 8.105s;
+}
+.star:nth-child(33) {
+  --star-tail-length: 6.36em;
+  --top-offset: 85.14vh;
+  --fall-duration: 7.423s;
+  --fall-delay: 0.79s;
+}
+.star:nth-child(34) {
+  --star-tail-length: 5.23em;
+  --top-offset: 74.99vh;
+  --fall-duration: 11.574s;
+  --fall-delay: 4.471s;
+}
+.star:nth-child(35) {
+  --star-tail-length: 6.94em;
+  --top-offset: 71.63vh;
+  --fall-duration: 6.741s;
+  --fall-delay: 2.376s;
+}
+.star:nth-child(36) {
+  --star-tail-length: 5.4em;
+  --top-offset: 71.73vh;
+  --fall-duration: 10.708s;
+  --fall-delay: 1.743s;
+}
+.star:nth-child(37) {
+  --star-tail-length: 6.59em;
+  --top-offset: 44vh;
+  --fall-duration: 10.136s;
+  --fall-delay: 6.644s;
+}
+.star:nth-child(38) {
+  --star-tail-length: 5.93em;
+  --top-offset: 5.09vh;
+  --fall-duration: 11.881s;
+  --fall-delay: 4.453s;
+}
+.star:nth-child(39) {
+  --star-tail-length: 6.49em;
+  --top-offset: 71.08vh;
+  --fall-duration: 10.717s;
+  --fall-delay: 0.141s;
+}
+.star:nth-child(40) {
+  --star-tail-length: 6.51em;
+  --top-offset: 11.95vh;
+  --fall-duration: 8.341s;
+  --fall-delay: 6.303s;
+}
+.star:nth-child(41) {
+  --star-tail-length: 7.46em;
+  --top-offset: 33.3vh;
+  --fall-duration: 10.184s;
+  --fall-delay: 9.538s;
+}
+.star:nth-child(42) {
+  --star-tail-length: 6.34em;
+  --top-offset: 41.64vh;
+  --fall-duration: 7.686s;
+  --fall-delay: 4.891s;
+}
+.star:nth-child(43) {
+  --star-tail-length: 5.32em;
+  --top-offset: 88.27vh;
+  --fall-duration: 6.643s;
+  --fall-delay: 9.97s;
+}
+.star:nth-child(44) {
+  --star-tail-length: 6.33em;
+  --top-offset: 25.64vh;
+  --fall-duration: 10.401s;
+  --fall-delay: 9.682s;
+}
+.star:nth-child(45) {
+  --star-tail-length: 5.9em;
+  --top-offset: 92.91vh;
+  --fall-duration: 7.342s;
+  --fall-delay: 1.078s;
+}
+.star:nth-child(46) {
+  --star-tail-length: 6.58em;
+  --top-offset: 52.84vh;
+  --fall-duration: 10.412s;
+  --fall-delay: 2.878s;
+}
+.star:nth-child(47) {
+  --star-tail-length: 6.66em;
+  --top-offset: 95.98vh;
+  --fall-duration: 9.195s;
+  --fall-delay: 6.012s;
+}
+.star:nth-child(48) {
+  --star-tail-length: 5.77em;
+  --top-offset: 62.39vh;
+  --fall-duration: 8.677s;
+  --fall-delay: 1.599s;
+}
+.star:nth-child(49) {
+  --star-tail-length: 5.85em;
+  --top-offset: 63.65vh;
+  --fall-duration: 11.333s;
+  --fall-delay: 6.027s;
+}
+.star:nth-child(50) {
+  --star-tail-length: 6.72em;
+  --top-offset: 63.47vh;
+  --fall-duration: 6.651s;
+  --fall-delay: 5.54s;
+}
+.star::before, .star::after {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: calc(var(--star-width) / -2);
+  width: var(--star-width);
+  height: 100%;
+  background: linear-gradient(45deg, transparent, currentColor, transparent);
+  border-radius: inherit;
+  animation: blink 2s linear infinite;
+}
+.star::before {
+  transform: rotate(45deg);
+}
+.star::after {
+  transform: rotate(-45deg);
+}
+
+@keyframes fall {
+  to {
+    transform: translate3d(-30em, 0, 0);
+  }
+}
+@keyframes tail-fade {
+  0%, 50% {
+    width: var(--star-tail-length);
+    opacity: 1;
+  }
+  70%, 80% {
+    width: 0;
+    opacity: 0.4;
+  }
+  100% {
+    width: 0;
+    opacity: 0;
+  }
+}
+@keyframes blink {
+  50% {
+    opacity: 0.6;
+  }
+}
+
+.next{
+			width: 350px;
+			height: 500px;
+			margin-top: 50px;
+			border-radius: 10px;
+			z-index: 99; 
+      display: none;
+      background: radial-gradient(ellipse at bottom, rgba(13, 29, 49, 0) 0%, rgba(12, 13, 19, 1) 100%);
+	    border-radius: 10px;
+	    box-shadow: 5px 20px 50px #000;
+      margin-left: 80px;
+			
+		}
+		.next input{
+			width: 50%;
+			height: 20%;
+			justify-content: center;
+			display: flex;
+			padding: 10px;
+			border: none;
+			outline: none;
+			margin-top: 50px;
+			margin-left: 20px;
+			border-radius: 10px;
+		}
+		.next label{
+			font-size: 20px;
+			color: #fff;
+			margin-left: 20px;
+			position: relative;
+			top: 50px;
+			
+		}
+
+</style>
+<body>
+
+	<nav class="navbar">
+		<a href="#">Home</a>
+		<a href="/aboutus">About Us</a>
+		<a href="/howtouse">How to use</a>
+	</nav>
+
+    <div class="stars">
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+      </div>
+<!--{% with messages = get_flashed_messages() %}
+	{%  if messages %}
+		{% for message in messages %}
+			<h3>{{ message }}</h3>
+		{% endfor %}
+	{% endif %}
+{% endwith %} -->
+<div class="omr-content">
+    <h1>Welcome to Our OMR System</h1>
+    <p>It is an automated technology that detects and captures marks made on paper, typically in the form of checkboxes or bubbles, and converts them into digital data for analysis and processing, commonly used for surveys, exams, and forms</p>
+    <!-- Add your OMR system content here -->
+</div>
+	<div class="main" id="main">  	
+		<input type="checkbox" id="chk" aria-hidden="true">
+
+    <div class="signup">
+			<form id="signupForm" method="POST" action="/add_user">
+				<label for="chk" aria-hidden="true">OMR SYSTEM<br>SIGN UP</label>
+				<input type="text" name="username" id="signupUsername" placeholder="User name" required="">
+				<input type="email" name="email" id="signupEmail" placeholder="Email" required="">
+				<input type="password" name="password" id="signupPassword" placeholder="Password" required="">
+				<input type="submit" class="btn" value="SIGNUP" onclick="myfunc(event, 'signup')" id="signup"><!--onclick="myfunc(event, 'signup')"-->
+			</form>
+		</div>
+		
+			<div class="login" >
+				<form id="loginForm" method="POST" action="/login_validation">
+					<label for="chk" aria-hidden="true">LOGIN</label>
+					<input type="email" name="email" id="loginEmail" placeholder="Email" required="">
+					<input type="password" name="password" id="loginPassword" placeholder="Password" required="">
+					<input type="submit" class="btn" value="LOGIN" onclick="myfunc(event, 'login')" id="login"><!--onclick="myfunc(event, 'login')"-->
+				</form>
+			</div>
+			
+	</div>
+  
+  <div class="next" id="next">
+		<form action="/data/" method="POST">
+			<label for="questions">Number of Questions:</label>
+			<input type="number" id="questions" name="questions" required>
+	
+			<label for="choices">Number of Choices:</label>
+			<input type="number" id="choices" name="choices" required>
+	
+			<label for="ans">Answers (comma-separated, e.g., 1,2,0,1,4):</label>
+			<input type="text" id="ans" name="ans" required>
+	
+			<input type="submit" class="btn" value="SCAN">
+		</form>
+	</div>
+	<script>
+    
+function myfunc(event, formType) {
+            
+    event.preventDefault(); // Prevent form submission
+    console.log("myfunc called with formType: " + formType);
+
+    // Get the form inputs by their IDs
+    var usernameInput = document.getElementById("signupUsername");
+    var emailInput = document.getElementById("signupEmail");
+    var passwordInput = document.getElementById("signupPassword");
+    
+    // Set default form elements
+    var nextElement = document.querySelector(".next");
+    var mainElement = document.querySelector(".main");
+
+    if (formType === 'login') {
+        emailInput = document.getElementById("loginEmail");
+        passwordInput = document.getElementById("loginPassword");
+    }
+
+    // Check if all inputs are filled
+    if (formType === 'signup' && (usernameInput.value.trim() === "" || emailInput.value.trim() === "" || passwordInput.value.trim() === "")) {
+        alert("Please fill in all fields for signup.");
+        return; // Exit the function if any input is not filled for signup
+    }
+
+    if (formType === 'login' && (emailInput.value.trim() === "" || passwordInput.value.trim() === "")) {
+        alert("Please fill in both email and password for login.");
+        return; // Exit the function if any input is not filled for login
+    }
+
+    var loginData = {
+        email: emailInput.value,
+        password: passwordInput.value
+    };
+    var signupData = {
+        username:usernameInput.value,
+        email: emailInput.value,
+        password: passwordInput.value
+    };
+
+      // Make an AJAX POST request to the Flask endpoint for login or signup validation
+      var url = formType === 'login' ? '/login_validation' : '/add_user';
+
+fetch(url, {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(signupData)
+})
+.then(function(response) {
+    return response.json(); // Parse the JSON response from Flask
+})
+.then(function(data) {
+    // Check the response from Flask
+    if (data.login_successful || data.signup_successful) {
+        // Login or signup was successful, execute your JS function or redirect to another page
+        alert('Operation successful! Now Please Insert your Inputs');
+        if (mainElement.style.display === "block" || mainElement.style.display === "") {
+            // Hide .main and show .next
+            mainElement.style.display = "none";
+            nextElement.style.display = "block";
+        } else {
+            // Show .main and hide .next
+            mainElement.style.display = "block";
+            nextElement.style.display = "none";
+        }
+    } 
+    else {
+        // Login or signup failed, show an error message or take appropriate action
+        alert('Operation failed. Please check your credentials.');
+    }
+})
+.catch(function(error) {
+    console.error('Error:', error);
+});
+console.log(data);
+    
+     //Make an AJAX POST request to the Flask endpoint for login validation
+   /* fetch('/login_validation', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(loginData)
+    })
+    .then(function(response) {
+        return response.json(); // Parse the JSON response from Flask
+    })
+    .then(function(data) {
+         //Check the response from Flask
+        if (data.login_successful) {
+            // Login was successful, execute your JS function or redirect to another page
+            alert('Login successful! Now Please Insert your Inputs');
+            if (mainElement.style.display === "block" || mainElement.style.display === "") {
+                // Hide .main and show .next
+                mainElement.style.display = "none";
+                nextElement.style.display = "block";
+            } else {
+                // Show .main and hide .next
+                mainElement.style.display = "block";
+                nextElement.style.display = "none";
+            }
+        } else {
+             //Login failed, show an error message or take appropriate action
+            alert('Login failed. Please check your credentials.');
+        }
+    })
+    .catch(function(error) {
+        console.error('Error:', error);
+    });
+
+    // Now, you can execute your signup or login logic here
+    // For example, you can submit the form or perform other actions
+
+    // Toggle the display property to hide/show elements
+  }*/
+}
+
+	</script>
+</body>
+</html>

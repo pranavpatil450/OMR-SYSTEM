@@ -1,0 +1,289 @@
+<!--<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: url('https://www.idfreshfood.com/wp-content/uploads/2017/09/contact_us_2.jpg') no-repeat center center fixed;
+            background-size: cover;
+        }
+        header {
+            background-color: rgba(51, 51, 51, 0.7);
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+        }
+        h1 {
+            font-size: 36px;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 60px;
+        }
+        .developer {
+            margin: 20px 0;
+            padding: 10px;
+            background-color: #fff;
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+        }
+        .developer img {
+            max-width: 300px;
+            border-radius: 300%;
+            margin-right: 20px;
+        }
+        h2 {
+            font-size: 24px;
+        }
+        .marquee-title {
+            animation: marquee 5s linear infinite;
+        }
+        @keyframes marquee {
+            0% {
+                transform: translateX(100%);
+            }
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1 class="marquee-title">About Us</h1>
+    </header>
+    <div class="container">
+        <div class="developer">
+            <img src="https://www.idfreshfood.com/wp-content/uploads/2017/09/contact_us_2.jpg" alt="Developer 1">
+            <div>
+                <h2>Developer 1</h2>
+                <p>Name: Savinay Kamlakar Pandey</p>
+                <p>Contact Number: 123-456-7890</p>
+                <p>Age: 30</p>
+                <p>Work Done: Web Development</p>
+            </div>
+        </div>
+        <div class="developer">
+            <img src="https://www.idfreshfood.com/wp-content/uploads/2017/09/contact_us_2.jpg" alt="Developer 2">
+            <div>
+                <h2>Developer 2</h2>
+                <p>Name: Pranav Pravin Patil</p>
+                <p>Contact Number: 987-654-3210</p>
+                <p>Age: 28</p>
+                <p>Work Done: Mobile App Development</p>
+            </div>
+        </div>
+        <div class="developer">
+            <img src="https://www.idfreshfood.com/wp-content/uploads/2017/09/contact_us_2.jpg" alt="Developer 3">
+            <div>
+                <h2>Developer 3</h2>
+                <p>Name: Gautam Rajesh Pandey</p>
+                <p>Contact Number: 555-123-4567</p>
+                <p>Age: 25</p>
+                <p>Work Done: Front-end Development</p>
+            </div>
+        </div>
+        <div class="developer">
+            <img src="https://www.idfreshfood.com/wp-content/uploads/2017/09/contact_us_2.jpg" alt="Developer 4">
+            <div>
+                <h2>Developer 4</h2>
+                <p>Name: Pratik Kishor Patil</p>
+                <p>Contact Number: 123-555-7890</p>
+                <p>Age: 27</p>
+                <p>Work Done: Back-end Development</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+-->
+
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+
+    <!-- Linking CSS File index.css -->
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>/* google fonts link */
+
+    @import url("https://fonts.googleapis.com/css2?family=Nunito&display=swap");
+    
+    * {
+      margin: 0px;
+      padding: 0px;
+      box-sizing: border-box;
+      font-family: "Nunito", sans-serif;
+    }
+    body{
+        background: radial-gradient(ellipse at bottom, rgba(13, 29, 49, 0) 0%, rgba(12, 13, 19, 1) 100%);
+    }
+    .theme-text {
+      color: #474af0;
+    }
+    
+    .card-img-top {
+      height: 200px;
+      width: 100%;
+    }
+    .card {
+      z-index: 1;
+      overflow: hidden;
+      transition: 0.5s;
+    }
+    .card:hover {
+      color: white;
+    }
+    .card::before {
+      content: "";
+      position: absolute;
+      left: -100%;
+      top: 0%;
+      background: #474af0;
+      width: 100%;
+      height: 100%;
+      transition: 0.5s;
+      z-index: -1;
+    }
+    .card:hover::before {
+      left: 0%;
+      color: white;
+    }
+    .container-fluid {
+      background-image: url("blob-scene-haikei.svg");
+      background-position: center;
+      background-size: cover;
+    }
+    </style>
+
+    <title>About Us</title>
+</head>
+
+<body>
+
+    <div class="container-fluid">
+        <h1 class="text-center mt-5 display-3 fw-bold">About<span class="theme-text"> Us</span></h1>
+        <hr class="mx-auto mb-5 w-25">
+        <div class="row mb-5">
+            <div class="col-12 col-sm-6 col-md-3 m-auto">
+                <!-- card starts here -->
+                <div class="card shadow">
+                    <!-- <img src="./goku-4k-2020-2n.jpg" alt="" class="card-img-top"> -->
+                    <img src="{{ url_for ('static' , filename='media/goku-4k-2020-2n.jpg') }}" class="card-img-top">
+                    <div class="card-body">
+                        <h3 class="text-center">Gautam Pandey</h3>
+                        <h4 class="text-center">APSIT</h4>
+                        <hr class="mx-auto w-75">
+                        <p class="text-center"><b>
+                            Front End Developer
+                        </b>
+                        </p>
+                    </div>
+                </div>
+                <!-- card ends here -->
+            </div>
+            <!-- col ends here -->
+            <div class="col-12 col-sm-6 col-md-3 m-auto">
+                <!-- card starts here -->
+                <div class="card shadow">
+                    <!-- <img src="./goku-4k-2020-2n.jpg" alt="" class="card-img-top"> -->
+                    <img src="{{ url_for ('static' , filename='media/goku-4k-2020-2n.jpg') }}" class="card-img-top">
+                    <div class="card-body">
+                        <h3 class="text-center">Pranav Patil</h3>
+                        <h4 class="text-center">APSIT</h4>
+                        <hr class="mx-auto w-75">
+                        <p class="text-center"><b>
+                            Front End Developer
+                        </b>
+                        </p>
+                    </div>
+                </div>
+                <!-- card ends here -->
+            </div>
+            <!-- col ends here -->
+            <div class="col-12 col-sm-6 col-md-3 m-auto">
+                <!-- card starts here -->
+                <div class="card shadow">
+                    <!-- <img src="./Savinay.jpeg" alt="" class="card-img-top"> -->
+                    <img src="{{ url_for ('static' , filename='media/Savinay.jpeg') }}" class="card-img-top">
+                    <div class="card-body">
+                        <h3 class="text-center">Savinay Pandey</h3>
+                        <h4 class="text-center">APSIT</h4>
+                        <hr class="mx-auto w-75">
+                        <p class="text-center"><b>
+                            Backend Developer
+                        </b>
+                        </p>
+                    </div>
+                </div>
+                <!-- card ends here -->
+            </div>
+            <!-- col ends here -->
+            <div class="col-12 col-sm-6 col-md-3 m-auto">
+                <!-- card starts here -->
+                <div class="card shadow">
+                    <!-- <img src="./pratik.jpeg" alt="" class="card-img-top"> -->
+                    <img src="{{ url_for ('static' , filename='media/pratik.jpeg') }}" class="card-img-top">
+                    <div class="card-body">
+                        <h3 class="text-center">Pratik Patil</h3>
+                        <h4 class="text-center">APSIT</h4>
+                        <hr class="mx-auto w-75">
+                        <p class="text-center"><b>
+                            backend developer 
+                        </b>
+                        </p>
+                    </div>
+                </div>
+                <!-- card ends here -->
+            </div>
+            <!-- col ends here -->
+        </div>
+    </div>
+
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+        crossorigin="anonymous"></script>
+
+        <footer>
+            <style>
+                .social-media-icons {
+            display: flex;
+            justify-content: center; /* Center horizontally within the footer */
+            align-items: center; /* Center vertically within the footer */
+        }
+            </style>
+            <!-- Your footer content goes here -->
+            <p class="text-center">&copy; 2023 OMR SYSTEM</p>
+            <div class="social-media-icons"> 
+                <a href="https://www.facebook.com/yourpage" target="_blank"><i class="fab fa-facebook"></i></a>&nbsp&nbsp
+                <a href="https://www.twitter.com/yourpage" target="_blank"><i class="fab fa-twitter"></i></a>&nbsp&nbsp
+                <a href="https://www.instagram.com/yourpage" target="_blank"><i class="fab fa-instagram"></i></a>&nbsp&nbsp
+                <!-- Add more social media icons as needed -->
+            </div>
+        
+        </footer>
+    
+
+</body>
+
+</html>

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>OMR System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <!-- <image src="{{ url_for ('static' , filename='media/logo.jpg') }}"></image> -->
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.0.0-alpha.12/html2canvas.min.js"></script>
+</head>
+<body>
+    <div class="hero">
+        <video autoplay loop muted plays-inline class="bg_video">
+            <source src="{{ url_for('static' , filename='media/bg.mp4') }}" type="video/mp4">
+        </video>
+
+        <nav>
+            <img src="{{ url_for ('static' , filename='media/quickGrade2_rem.png') }}" class="logo">
+            <ul>
+                <li><a href="/">HOME</a></li>
+                <li><a href="/aboutus">ABOUT US</a></li>
+                <li><a href="/howtouse">How to Use</a></li>
+            </ul>
+        </nav>
+        <div class="content">
+            <h1>OMR SYSTEM</h1>
+            <a href="#">SCAN</a>
+        </div>
+        <div class="main" id="main">  	
+            <input type="checkbox" id="chk" aria-hidden="true">
+    
+        <div class="signup">
+                <form id="signupForm" method="POST" action="/add_user">
+                    <label for="chk" aria-hidden="true">OMR SYSTEM<br>SIGN UP</label>
+                    <input type="text" name="username" id="signupUsername" placeholder="User name" required="">
+                    <input type="email" name="email" id="signupEmail" placeholder="Email" required="">
+                    <input type="password" name="password" id="signupPassword" placeholder="Password" required="">
+                    <input type="submit" class="btn" value="SIGNUP" onclick="myfunc(event, 'signup')" id="signup"><!--onclick="myfunc(event, 'signup')"-->
+                </form>
+            </div>
+            
+                <div class="login" >
+                    <form id="loginForm" method="POST" action="/login_validation">
+                        <label for="chk" aria-hidden="true">LOGIN</label>
+                        <input type="email" name="email" id="loginEmail" placeholder="Email" required="">
+                        <input type="password" name="password" id="loginPassword" placeholder="Password" required="">
+                        <input type="submit" class="btn" value="LOGIN" onclick="myfunc(event, 'login')" id="login"><!--onclick="myfunc(event, 'login')"-->
+                    </form>
+                </div>
+                
+        </div>
+    <div class="next">
+        <form  name="form" action="/data/" method="post" class="form">
+            <label>SELECT Number of Questions :</label><br>
+                <input type="radio" name="questions" value="5">5<br>
+                <input type="radio" name="questions" value="10">10<br>
+                <input type="radio" name="questions" value="15">15<br><br><br>
+            <label>SELECT number of Choices :</label><br>
+                <input type="radio" name="choices" value="3">3 <br>
+                <input type="radio" name="choices" value="4">4 <br>
+                <input type="radio" name="choices" value="5">5<br><br><br>
+            <label>Correct Answers:</label>
+                <p><strong>Enter answers in format as '11013'..Here 0=A , 1=B , 2=C and so on</strong></p>
+                <input type="text" name="ans"><br><br>
+                <input type="submit" value="submit">
+        </form>
+    </div>
+
+    </div>
+    <script>
+        function myfunc(event, formType) {
+            
+            event.preventDefault(); // Prevent form submission
+            console.log("myfunc called with formType: " + formType);
+        
+            // Get the form inputs by their IDs
+            var usernameInput = document.getElementById("signupUsername");
+            var emailInput = document.getElementById("signupEmail");
+            var passwordInput = document.getElementById("signupPassword");
+            
+            // Set default form elements
+            var nextElement = document.querySelector(".next");
+            var mainElement = document.querySelector(".main");
+        
+            if (formType === 'login') {
+                emailInput = document.getElementById("loginEmail");
+                passwordInput = document.getElementById("loginPassword");
+            }
+        
+            // Check if all inputs are filled
+            if (formType === 'signup' && (usernameInput.value.trim() === "" || emailInput.value.trim() === "" || passwordInput.value.trim() === "")) {
+                alert("Please fill in all fields for signup.");
+                return; // Exit the function if any input is not filled for signup
+            }
+        
+            if (formType === 'login' && (emailInput.value.trim() === "" || passwordInput.value.trim() === "")) {
+                alert("Please fill in both email and password for login.");
+                return; // Exit the function if any input is not filled for login
+            }
+        
+            var loginData = {
+                email: emailInput.value,
+                password: passwordInput.value
+            };
+            var signupData = {
+                username:usernameInput.value,
+                email: emailInput.value,
+                password: passwordInput.value
+            };
+        
+              // Make an AJAX POST request to the Flask endpoint for login or signup validation
+              var url = formType === 'login' ? '/login_validation' : '/add_user';
+        
+        fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(signupData)
+        })
+        .then(function(response) {
+            return response.json(); // Parse the JSON response from Flask
+        })
+        .then(function(data) {
+            // Check the response from Flask
+            if (data.login_successful || data.signup_successful) {
+                // Login or signup was successful, execute your JS function or redirect to another page
+                alert('Operation successful! Now Please Insert your Inputs');
+                if (mainElement.style.display === "block" || mainElement.style.display === "") {
+                    // Hide .main and show .form
+                    mainElement.style.display = "none";
+                    nextElement.style.display = "block";
+                } else {
+                    // Show .main and hide .form
+                    mainElement.style.display = "block";
+                    nextElement.style.display = "none";
+                }
+            } else {
+                // Login or signup failed, show an error message or take appropriate action
+                alert('Operation failed. Please check your credentials.');
+            }
+        })
+        .catch(function(error) {
+            console.error('Error:', error);
+        });
+    }
+    </script>
+</body>
+</html>
